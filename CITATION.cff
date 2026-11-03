@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "Please cite ClonoForge 1.0.0 and the pRESTO reference paper where applicable."
+title: ClonoForge
+type: software
+authors:
+  - family-names: Yap
+    given-names: Yoon Sing
+version: 1.0.0
+repository-code: https://github.com/Yoonecorn/ClonoForge
+license:
+  - MIT
+  - Apache-2.0
+references:
+  - type: article
+    title: "pRESTO: a toolkit for processing high-throughput sequencing raw reads of lymphocyte receptor repertoires"
+    authors:
+      - family-names: Vander Heiden
+        given-names: Jason A.
+      - family-names: Yaari
+        given-names: Gur
+      - family-names: Uduman
+        given-names: Mohamed
+      - family-names: Stern
+        given-names: Joel N. H.
+      - family-names: "O'Connor"
+        given-names: Kevin C.
+      - family-names: Hafler
+        given-names: David A.
+      - family-names: Vigneault
+        given-names: Francois
+      - family-names: Kleinstein
+        given-names: Steven H.
+    year: 2014
+    journal: Bioinformatics
+    doi: 10.1093/bioinformatics/btu138

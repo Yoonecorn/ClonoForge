@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClonoForge paired completion",
+  "type": "object",
+  "required": [
+    "schema",
+    "complete",
+    "inputs",
+    "configuration",
+    "counts",
+    "files",
+    "target_only"
+  ],
+  "properties": {
+    "schema": {
+      "const": "clonoforge-m4-preliminary-v1"
+    },
+    "complete": {
+      "const": true
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "required": [
+        "header",
+        "key_start",
+        "key_len",
+        "target",
+        "trim",
+        "primer",
+        "min_length",
+        "max_n",
+        "min_mean_q",
+        "max_group",
+        "max_record"
+      ],
+      "properties": {
+        "header": {
+          "enum": [
+            "identical",
+            "sra",
+            "slash"
+          ]
+        },
+        "key_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "key_len": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "target": {
+          "enum": [
+            "first",
+            "second"
+          ]
+        },
+        "trim": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "primer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "min_length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_n": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "min_mean_q": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 93
+        },
+        "max_group": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "max_record": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "pairs",
+        "invalid_key",
+        "short_target",
+        "primer_miss",
+        "too_short",
+        "too_many_n",
+        "low_quality",
+        "candidates",
+        "group_excluded",
+        "group_excluded_groups",
+        "oversize_records",
+        "oversize_groups",
+        "unequal_records",
+        "unequal_groups",
+        "qualified",
+        "qualified_groups"
+      ],
+      "properties": {
+        "pairs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "invalid_key": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "short_target": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "primer_miss": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "too_short": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "too_many_n": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "low_quality": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "candidates": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "group_excluded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "group_excluded_groups": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "oversize_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "oversize_groups": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unequal_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unequal_groups": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "qualified_groups": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "object",
+      "required": [
+        "qualified.fastq",
+        "m3_completion.json",
+        "m3_consensus-pass.fastq"
+      ],
+      "properties": {
+        "qualified.fastq": {
+          "type": "object",
+          "required": [
+            "bytes",
+            "sha256"
+          ],
+          "properties": {
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "m3_completion.json": {
+          "type": "object",
+          "required": [
+            "bytes",
+            "sha256"
+          ],
+          "properties": {
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "m3_consensus-pass.fastq": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "bytes",
+                "sha256"
+              ],
+              "properties": {
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "target_only": {
+      "const": true
+    }
+  },
+  "additionalProperties": false
+}

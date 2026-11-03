@@ -1,0 +1,3 @@
+[workspace]
+members = ["crates/clonoforge-core", "crates/clonoforge-cli"]
+resolver = "2"

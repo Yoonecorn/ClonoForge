@@ -1,0 +1,18 @@
+[package]
+name = "clonoforge-cli"
+version = "1.0.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Yoonecorn/ClonoForge"
+description = "Deterministic bounded FASTQ preprocessing and UMI consensus"
+
+[[bin]]
+name = "clonoforge"
+path = "src/main.rs"
+
+[features]
+experimental-large = ["clonoforge-core/experimental-large"]
+
+[dependencies]
+clonoforge-core = { path = "../clonoforge-core" }
+serde_json = "1.0"
